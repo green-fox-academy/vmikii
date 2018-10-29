@@ -1,15 +1,25 @@
+import java.util.Scanner;
 public class Square
 {
     public static void main(String[] args)
     {
-        for (int i = 0; i < 6; i++)
+        Scanner sc = new Scanner(System.in);
+        int a =  sc.nextInt();
+        for (int i = 0; i < a; i++)
         {
-            if (i == 0 || i == 5)
+            if (i == 0 || i == (a - 1))
             {
-                System.out.println("%%%%%%");
+                for (int k = 0; k < a; k++)
+                    System.out.print("%");
+                System.out.println();
             }
             else
-                System.out.println("%    %");
+            {
+                System.out.print("%");
+                for (int j = 0; j < (a - 2); j ++)
+                    System.out.print(" ");
+                System.out.println("%");
+            }
         }
     }
 }
