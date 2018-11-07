@@ -43,9 +43,9 @@ public class FunctionToCenter {
 //            }
 //        }
 
-        for (int i = 0; i < WIDTH; i+=20){
-            for (int j = 0; j < WIDTH; j +=20){
-                if (i == 0 || i == 320 && j == 0 || j == 320)
+        for (int i = 0; i <= WIDTH; i += 20){
+            for (int j = WIDTH; j >= 0; j -= 20){
+                if (i == 0 || i == WIDTH || j == WIDTH || j == 0)
                     F(graphics, i, j);
             }
         }
