@@ -7,45 +7,35 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class SuperHexagon {
     public static void mainDraw(Graphics graphics) {
-
-
-//        for (int i = 0; i <= WIDTH; i += space){
-//            for (int j = 20; j <= WIDTH; j += space){
-//                graphics.drawLine(0, i, i + space, 320 );
-//                graphics.drawLine(i, 0, 320, i + space );
-//            }
-//        }
         int x = 40;
-        int y = 230;
-        int size = 20;
-        int oszlopDb = 4;
-        //drawHexagon(graphics, 30, 300);
-//        for (int i = 0; i < 5; i++){
-//            drawHexagon(graphics, x, y);
-//            y-= (int)(Math.sqrt(3)*30);
-//        }
-        int db = 3;
-        for (int i = 0; i < 3; i++){
-            for (int j = 0; j < oszlopDb; j++){
-                drawHexagon(graphics, x, y);
-                y-= (int)(Math.sqrt(3)*size);
-            }
-            db++;
-            oszlopDb++;
-            x += size + size/2;
-            y += db * (int)(Math.sqrt(3)*size) + (int)(Math.sqrt(3)*size)/2;
-        }
-        y -= db * (int)(Math.sqrt(3)*size);
-        for (int i = 0; i < 4; i++){
-            for (int j = oszlopDb; j > 0; j--){
-                drawHexagon(graphics, x, y);
-                y+= (int)(Math.sqrt(3)*size);
-            }
-            oszlopDb--;
-            x += size + size/2;
-            y -= oszlopDb * (int)(Math.sqrt(3)*size) + (int)(Math.sqrt(3)*size)/2;
-        }
+        int y = 270;
+        int sideLength = 15;
+        int height = (int)(Math.sqrt(3)*sideLength);
+        int numberOfHex = 3;
+        int a = numberOfHex - 1;
+        int xshift = sideLength + sideLength/2;
+        int yshift = height + height/2;
 
+        for (int i = 0; i < a; i++){
+            for (int j = 0; j < numberOfHex; j++){                           //draws the given number of hexagon column
+                drawHexagon(graphics, height, sideLength, x, y);
+                y-= height;
+            }
+            numberOfHex++;                                                   //after drawing a column it increases the number of hexagons in the next column
+            x += sideLength + sideLength/2;                                  //shifting x coords of next column
+            y += (numberOfHex - 1) * height + height/2;                      //shifting y coords of next column
+        }
+        y -= (numberOfHex - 1) * height;                             //setting new source point for the other side of th structure
+        a++;
+        for (int i = 0; i < a; i++){
+            for (int j = numberOfHex; j > 0; j--){
+                drawHexagon(graphics, height, sideLength, x, y);
+                y+= height;
+            }
+            numberOfHex--;
+            x += sideLength + sideLength/2;                                 //shift x
+            y -= numberOfHex * height + height/2;                            //shift y
+        }
     }
     public static Color randomColor() {
         Random random = new Random();
@@ -55,17 +45,18 @@ public class SuperHexagon {
         return new Color(r,g, b);
     }
 
+    public static void drawCircle(Graphics graphics, int size, int x, int y){
+        graphics.drawOval(x - (int)(Math.sqrt(3)*size)/5, y - (int)(Math.sqrt(3)*size), (int)(Math.sqrt(3)*size), (int)(Math.sqrt(3)*size));
+    }
 
-    public static void drawHexagon(Graphics graphics, int x, int y)
+    public static void drawHexagon(Graphics graphics, int height, int size, int x, int y)
     {
-        int size = 40;
-        graphics.setColor(randomColor());
-        graphics.drawLine(x, y, x + size, y);
-        graphics.drawLine(x + size, y, x + (size/2) + size, y - (int)(Math.sqrt(3)*size/2));
-        graphics.drawLine(x + size + size/2, y - (int)(Math.sqrt(3)*size/2), x + size, y - (int)((Math.sqrt(3)*size/2) * 2));
-        graphics.drawLine(x + size, y - (int)((Math.sqrt(3)*size/2) * 2), x, y - (int)((Math.sqrt(3)*size/2) * 2));
-        graphics.drawLine(x, y - (int)((Math.sqrt(3)*size/2) * 2), x - size/2, y - (int)(Math.sqrt(3)*size/2));
-        graphics.drawLine(x - size/2, y - (int)(Math.sqrt(3)*size/2), x, y);
+        graphics.drawLine(x, y, x + size, y);                                                            //6 sides -> 6 drawLine()
+        graphics.drawLine(x + size, y, x + (size/2) + size, y - height/2);
+        graphics.drawLine(x + size + size/2, y - height/2, x + size, y - height/2 * 2);
+        graphics.drawLine(x + size, y - height, x, y - height);
+        graphics.drawLine(x, y - height, x - size/2, y - height/2);
+        graphics.drawLine(x - size/2, y - height/2, x, y);
 
     }
 
