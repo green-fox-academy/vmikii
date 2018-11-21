@@ -22,7 +22,7 @@ public class Student extends Person {
   }
 
   @Override
-  protected Object clone() throws CloneNotSupportedException {
-    return new Student("JohnTheClone",this.age, this.gender, this.previousOrganization);
+  protected Student clone() throws CloneNotSupportedException {
+    return new Student(this.name += "TheClone",this.age, this.gender, this.previousOrganization);
   }
 }

@@ -44,9 +44,9 @@ public class Main {
     awesome.addMentor(gandhi);
     awesome.info();
 
-    Student John = new Student("John", 20, "male", "BME");
+    Student Dzson = new Student("John", 20, "male", "BME");
     try {
-      john.clone();
+      Dzson.clone().introduce();
     } catch (CloneNotSupportedException e) {
       System.out.println("off");
     }
