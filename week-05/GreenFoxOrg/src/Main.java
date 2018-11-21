@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class Main {
@@ -42,5 +43,12 @@ public class Main {
     awesome.addMentor(mentor);
     awesome.addMentor(gandhi);
     awesome.info();
+
+    Student John = new Student("John", 20, "male", "BME");
+    try {
+      john.clone();
+    } catch (CloneNotSupportedException e) {
+      System.out.println("off");
+    }
   }
 }

@@ -20,4 +20,9 @@ public class Student extends Person {
   public void skipDays(int numberOfDays) {
     skippedDays += numberOfDays;
   }
+
+  @Override
+  protected Object clone() throws CloneNotSupportedException {
+    return new Student("JohnTheClone",this.age, this.gender, this.previousOrganization);
+  }
 }
