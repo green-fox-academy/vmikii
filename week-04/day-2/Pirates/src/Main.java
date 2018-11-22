@@ -20,21 +20,11 @@ public class Main {
 //        s2.currentState();
 
         Armada a1 = new Armada("a1");
-        for (Ship s : a1.ships) {
-            s.captain.drinkSomeRum();
-            System.out.println(a1.name);
-            s.currentState();
-            s.currentScore();
-        }
+        a1.printOut();
         Armada a2 = new Armada("a2");
-        for (Ship s : a2.ships) {
-            s.captain.drinkSomeRum();
-            System.out.println(a2.name);
-            s.currentState();
-            s.currentScore();
-        }
+        a2.printOut();
         System.out.println(a1.war(a2));
-
-
+        a1.printOut();
+        a2.printOut();
     }
 }

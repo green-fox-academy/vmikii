@@ -9,16 +9,17 @@ public class Ship {
     Ship () {
         Pirates = new ArrayList<>();
         fillShip();
+        captainDrink();
     }
 
     private void fillShip() {
+        captain = new Pirate();
         Random rnd = new Random();
         int numOfPirates = rnd.nextInt(15);
         numOfPirates++;
         for (int i = 0; i < numOfPirates; i++) {
             Pirates.add(new Pirate());
         }
-        captain = new Pirate();
     }
 
     public void currentState() {
@@ -43,6 +44,7 @@ public class Ship {
     public boolean battle(Ship otherShip) {
         if (this.currentScore() > otherShip.currentScore()) {
             otherShip.randomDie();
+            this.captainDrink();
             return true;
         }
         else {
@@ -54,7 +56,14 @@ public class Ship {
         Random rnd = new Random();
         int c = rnd.nextInt(Pirates.size());
         for (int i = 0; i < c; i++) {
-            Pirates.get(0).die();
+            Pirates.get(i).die();
+        }
+    }
+
+    private void captainDrink() {
+        Random rnd = new Random();
+        for (int i = 0; i < rnd.nextInt(); i++) {
+            captain.drinkSomeRum();
         }
     }
 }

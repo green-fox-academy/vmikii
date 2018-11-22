@@ -20,19 +20,15 @@ public class GuessTheNumber
         Guess(a, lives - 1);
 
     }
-    static void  Guess(int number, int lives)
-    {
+    static void  Guess(int number, int lives) {
         Scanner sc = new Scanner(System.in);
         int b = sc.nextInt();
-        if (lives > 0)
-        {
-            if (b > number)
-            {
+        if (lives > 0) {
+            if (b > number) {
                 System.out.println("lower, lives: " + lives + "(" + number + ")");
                 Guess(number, --lives);
             }
-            else if (b < number)
-            {
+            else if (b < number) {
                 System.out.println("higher, lives: " + lives + "(" + number + ")");
                 Guess(number, --lives);
             }
