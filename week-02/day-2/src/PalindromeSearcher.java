@@ -26,36 +26,36 @@ public class PalindromeSearcher
 
     static String SearchPalindrome(String s)
     {
-        char[] sarr = s.toCharArray();                        //input string into char array
-        String asd = new String("[/");
-        for (int i = 0; i < sarr.length - 2; i++)             //minden karakterre megnézem, hogy előfordul-e a tömbben mégegyszer
+        char[] sarr = s.toCharArray();                                 //input string into char array
+        String result = new String("[/");
+        for (int i = 0; i < sarr.length - 2; i++)                      //minden karakterre megnézem, hogy előfordul-e a tömbben mégegyszer
         {
             int j = i + 1;
-            while (sarr[i] != sarr[j] && j <= sarr.length - 2) //addig megyek amíg nem találok olyat, mint az aktuális karakter
+            while (sarr[i] != sarr[j] && j <= sarr.length - 2)         //addig megyek amíg nem találok olyat, mint az aktuális karakter
             {
                 j++;
             }
-            if ((i + j) % 2 == 0)                            //ha páratlan a betűk száma
+            if ((i + j) % 2 == 0)                                      //ha páratlan a betűk száma
             {
                 int left = i;
                 int right = j;
-                while (sarr[left] == sarr[right] && left != right )   //kétoldalról bejárom amí megegyeznek a betűk, és a két index össze nem ér
+                while (sarr[left] == sarr[right] && left != right)     //kétoldalról bejárom amí megegyeznek a betűk, és a két index össze nem ér
                 {
                     left++;
                     right--;
                 }
-                if (right - left == 0)                      //ha az előző ciklus-ból azért lépek ki, mert a betűk megegyeztek
+                if (right - left == 0)                                 //ha az előző ciklus-ból azért lépek ki, mert a betűk megegyeztek
                 {
-                    for (int k = i; k <= j; k ++)           //akkor hozzáfűzöm a stringhez
+                    for (int k = i; k <= j; k ++)                      //akkor hozzáfűzöm a stringhez
                     {
-                        asd += sarr[k];
+                        result += sarr[k];
                     }
-                    asd += "/";
+                    result += "/";
                 }
             }
-            else                                             //ha páros számú a betűk száma
+            else                                                      //ha páros számú a betűk száma
             {
-                if ((j - i) >= 2)                             //és legalább 3 betűből áll
+                if ((j - i) >= 2)                                     //és legalább 3 betűből áll
                 {
                     int left = i;
                     int right = j;
@@ -64,44 +64,44 @@ public class PalindromeSearcher
                         left++;
                         right--;
                     }
-                    if (left - right == 1)                              //ha az előző ciklus-ból azért lépek ki, mert a betűk megegyeztek
+                    if (left - right == 1)                             //ha az előző ciklus-ból azért lépek ki, mert a betűk megegyeztek
                     {
                         for (int k = i; k <= j; k ++)
                         {
-                            asd += sarr[k];
+                            result += sarr[k];
                         }
-                        asd += "/";
+                        result += "/";
                     }
                 }
             }
         }
-        return asd + "]";                                              //visszaadom az összefűzött stringet
+        return result + "]";                                              //visszaadom az összefűzött stringet
 
         /*char temp;
         for (int i = 25;i < sarr.length - 3; i++)
         {
-            temp = sarr[i];                          //eltárolom az akt elemet
+            temp = sarr[i];                                           //eltárolom az akt elemet
             int j = i;
-            while (sarr[j + 1] != temp && j < sarr.length - 2)   //adig megyek amig nem találok egy ugyanolyan char
+            while (sarr[j + 1] != temp && j < sarr.length - 2)        //adig megyek amig nem találok egy ugyanolyan char
             {
                 j++;
             }
 
-            if (j - i  >= 0)                          //akt elem és talált közti vizsgálat
+            if (j - i  >= 0)                                         //akt elem és talált közti vizsgálat
             {
                 int bal = i + 1;
                 int jobb = j;
-                while (sarr[bal] == sarr[jobb] && bal < jobb)    //"dog goat dad duck doodle never"
+                while (sarr[bal] == sarr[jobb] && bal < jobb)        //"dog goat dad duck doodle never"
                 {
                     jobb--;
                     bal++;
                 }
                 if (bal == jobb)
                 {
-                    asd += " ";
+                    result += " ";
                     for (int k = i; k <= j + 1; k++)
                     {
-                        asd += sarr[k];
+                        result += sarr[k];
                     }
                 }
             }

@@ -33,4 +33,13 @@ public class Armada {
             ships.add(new Ship());
         }
     }
+
+
+    public void printOut() {
+        for (Ship s : ships) {
+            System.out.println(this.name);
+            s.currentState();
+            s.currentScore();
+        }
+    }
 }

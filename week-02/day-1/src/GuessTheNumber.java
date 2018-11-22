@@ -12,7 +12,7 @@ public class GuessTheNumber
 
     }
 
-    public static void Rek(int a)
+     public static void Rek(int a)
     {
         Scanner sc = new Scanner(System.in);
         int b = sc.nextInt();
