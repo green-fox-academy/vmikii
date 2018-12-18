@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,10 +32,21 @@ public class TodoService {
     repository.findAll().forEach(todos :: add);
     return todos;
   }
-  public void add(String todo) {
-    repository.save(new Todo(todo,false));
+  public void add(String title, boolean isUrgent) {
+    repository.save(new Todo(title,isUrgent));
   }
   public void delete(long id) {
     repository.deleteById(id);
+  }
+  public Todo tempTodo(long id, String title, boolean isUrgent, boolean isDone) {
+    Todo todo = new Todo(title, isUrgent, isDone);
+    todo.setId(id);
+    return todo;
+  }
+  public void updateTodo(long id, Todo todo) {
+    repository.save(todo);
+  }
+  public Todo getById(long id) {
+    return repository.findById(id).get();
   }
 }

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo CRUD App</title>
+</head>
+<body>
+<h1>Add a todo</h1>
+    <form action="/todo/add" method="post">
+        <input type="text" name="todo" placeholder="what to do?">
+        <input type="checkbox" name="isUrgent">urgent<br>
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>

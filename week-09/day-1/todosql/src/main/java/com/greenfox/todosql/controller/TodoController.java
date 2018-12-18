@@ -1,7 +1,6 @@
 package com.greenfox.todosql.controller;
 
 import com.greenfox.todosql.model.Todo;
-import com.greenfox.todosql.repository.TodoRepository;
 import com.greenfox.todosql.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,14 +32,26 @@ public class TodoController {
   }
 
   @PostMapping("/add")
-  public String add(String todo) {
-    service.add(todo);
+  public String add(String todo, boolean isUrgent) {
+    service.add(todo, isUrgent);
     return "redirect:/todo/list";
   }
 
   @GetMapping("/{id}/delete")
   public String delete(@PathVariable("id") long id) {
     service.delete(id);
+    return "redirect:/todo/list";
+  }
+
+  @GetMapping("/{id}/edit")
+  public String edit(@PathVariable("id") long id, Model model) {
+    model.addAttribute("todo", service.getById(id));
+    return "edittodo";
+  }
+
+  @PostMapping("/{id}/edit")
+  public String edit(@PathVariable("id") long id, String title, boolean isUrgent, boolean isDone) {
+    service.updateTodo(id,service.tempTodo(id, title, isUrgent, isDone));
     return "redirect:/todo/list";
   }
 }
