@@ -25,11 +25,18 @@
         </tr>
     </tbody>
 </table>
-<form th:action="@{/todo/{id}/edit(id=${todo.id})}" method="post">
+<!--<form th:action="@{/todo/{id}/edit(id=${todo.id})}" method="post">
     <input type="text" name="title" placeholder="title">
     <input type="checkbox" name="isUrgent" th:checked="${todo.urgent}">Urgent<br>
     <input type="checkbox" name="isDone" th:checked="${todo.done}">Done<br>
     <button type="submit">Edit</button>
+</form>-->
+<form th:action="@{/todo/{id}/edit(id=${todo.id})}" th:object="${todo}" method="post">
+    <input type="text" th:field="*{title}">
+    <input type="checkbox" th:field="*{urgent}">Urgent<br>
+    <input type="checkbox" th:field="*{done}">Done<br>
+    <button type="submit">Edit</button>
+
 </form>
 </body>
 </html>

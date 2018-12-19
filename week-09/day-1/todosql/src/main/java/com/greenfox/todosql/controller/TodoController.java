@@ -49,9 +49,15 @@ public class TodoController {
     return "edittodo";
   }
 
+//  @PostMapping("/{id}/edit")
+//  public String edit(@PathVariable("id") long id, String title, boolean isUrgent, boolean isDone) {
+//    service.updateTodo(id,service.tempTodo(id, title, isUrgent, isDone));
+//    return "redirect:/todo/list";
+//  }
+
   @PostMapping("/{id}/edit")
-  public String edit(@PathVariable("id") long id, String title, boolean isUrgent, boolean isDone) {
-    service.updateTodo(id,service.tempTodo(id, title, isUrgent, isDone));
+  public String edit(@ModelAttribute Todo todo) {
+    service.addTodo(todo);
     return "redirect:/todo/list";
   }
 }

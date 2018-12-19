@@ -49,4 +49,7 @@ public class TodoService {
   public Todo getById(long id) {
     return repository.findById(id).get();
   }
+  public void addTodo(Todo todo) {
+    repository.save(todo);
+  }
 }
