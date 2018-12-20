@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reddit</title>
+</head>
+<body>
+<h1>Submit post</h1>
+<form action="#" th:action="@{/submit}" th:object="${newPost}" method="post">
+    <p>Text: <input type="text" th:field="*{text}"/></p>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
