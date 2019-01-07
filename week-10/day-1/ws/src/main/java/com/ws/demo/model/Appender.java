@@ -1,4 +1,4 @@
 package com.ws.demo.model;
 
-public class Greeting {
+public class Appender {
 }
