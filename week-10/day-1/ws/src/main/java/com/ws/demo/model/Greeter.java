@@ -1,10 +1,10 @@
 package com.ws.demo.model;
 
-public class Greeting {
+public class Greeter {
 
   public String welcome_message;
 
-  public  Greeting(String name, String title) {
-    this.welcome_message = "Oh, hi there" + name + ", my dear" + title + "!";
+  public Greeter(String name, String title) {
+    this.welcome_message = "Oh, hi there " + name + ", my dear " + title + " !";
   }
 }

@@ -1,8 +1,12 @@
-package com.springapp.dependency;
+package com.springapp.dependency.service;
+
+import com.springapp.dependency.MyColor;
+import org.springframework.stereotype.Service;
+
 
 public class RedColor implements MyColor {
   @Override
-  public void printColor() {
-    System.out.println("red");
+  public String printColor() {
+    return "red";
   }
 }

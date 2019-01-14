@@ -1,10 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
+
+
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Webshop</title>
 </head>
 <body>
-$END$
+    <h1>My shop</h1>
+    <div class="links">
+        <a href="mi">only available</a>
+        <a href="mi">cheapest first</a>
+        <a href="mi">contains nike</a>
+        <a href="mi">average stock</a>
+        <a href="mi">most expenive available</a>
+    </div>
+    <div class="search-container">
+        <form action="/action_page.php">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity of stock</th>
+        </tr>
+        <tr th:each="item : ${items}">
+            <td th:text="${item.getName()}"></td>
+            <td th:text="${item.getDescription()}"></td>
+            <td th:text="${item.getPrice()}"></td>
+            <td th:text="${item.getQuantityOnStock()}"></td>
+        </tr>
+    </table>
 </body>
 </html>

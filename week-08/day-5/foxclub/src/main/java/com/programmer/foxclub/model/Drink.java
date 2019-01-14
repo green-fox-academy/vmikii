@@ -1,4 +1,5 @@
 package com.programmer.foxclub.model;
 
-public class Drink {
+public enum Drink {
+  víz
 }

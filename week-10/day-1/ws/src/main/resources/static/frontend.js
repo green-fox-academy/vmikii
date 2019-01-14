@@ -1,6 +1,3 @@
-/**
- * Created by aze on 2017.05.09..
- */
 window.baseUrl = "http://localhost:8080";
 $("#server_change").on("submit", function (e) {
     e.preventDefault();

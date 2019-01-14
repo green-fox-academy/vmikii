@@ -1,4 +1,4 @@
 package com.ws.demo.model;
 
-public class ResourceNotFoundException {
+public class ResourceNotFoundException extends RuntimeException {
 }
